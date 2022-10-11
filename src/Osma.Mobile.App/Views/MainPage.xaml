@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage
+    x:Class="Osma.Mobile.App.Views.MainPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"    
+    xmlns:account="clr-namespace:Osma.Mobile.App.Views.Account;assembly=Osma.Mobile.App"
+    xmlns:connections="clr-namespace:Osma.Mobile.App.Views.Connections;assembly=Osma.Mobile.App"
+    xmlns:credentials="clr-namespace:Osma.Mobile.App.Views.Credentials;assembly=Osma.Mobile.App"
+    xmlns:proofRequests="clr-namespace:Osma.Mobile.App.Views.Proofs;assembly=Osma.Mobile.App" 
+    xmlns:scan="clr-namespace:Osma.Mobile.App.Views.ScanQrCode"
+    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"    
+    android:TabbedPage.ToolbarPlacement="Bottom"   
+    android:TabbedPage.BarItemColor="#252738"
+    android:TabbedPage.BarSelectedItemColor="#00D974"
+    android:TabbedPage.IsSwipePagingEnabled="True"
+    BarBackgroundColor="#F2F1F1"
+    Appearing="Appearing"
+    CurrentPageChanged="CurrentPageChanged">
+
+    <connections:ConnectionsPage        
+        ios:NavigationPage.PrefersLargeTitles="True"        
+        BindingContext="{Binding Connections}"
+        Icon="connections_icon2.png" />
+    <credentials:CredentialsPage
+        ios:NavigationPage.PrefersLargeTitles="True"
+        BindingContext="{Binding Credentials}"
+        Icon="credential_icon2.png" />
+    <proofRequests:ProofRequestsPage
+        ios:NavigationPage.PrefersLargeTitles="True"
+        BindingContext="{Binding ProofRequests}"
+        Icon="request_icon.png" />
+    <account:AccountPage
+        ios:NavigationPage.PrefersLargeTitles="True"
+        BindingContext="{Binding Account}"
+        Icon="account_icon2.png" />
+    <scan:ScanQrCodePage
+        ios:NavigationPage.PrefersLargeTitles="True"
+        BindingContext="{Binding ScanQrCode}"
+        Icon="scan_icon.png" />
+</TabbedPage>

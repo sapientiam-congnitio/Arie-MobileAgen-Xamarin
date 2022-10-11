@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:forms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+    xmlns:views="clr-namespace:Osma.Mobile.App.Views.Connections;assembly=Osma.Mobile.App"
+    xmlns:converters="clr-namespace:Osma.Mobile.App.Converters;assembly=Osma.Mobile.App" 
+    xmlns:behaviours="clr-namespace:Osma.Mobile.App.Behaviors;assembly=Osma.Mobile.App"          
+    xmlns:local="clr-namespace:Osma.Mobile.App.Utilities"
+    xmlns:components="clr-namespace:Osma.Mobile.App.Views.Components;assembly=Osma.Mobile.App"
+    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    x:Class="Osma.Mobile.App.Views.Connections.ConnectionPage"
+    Title="{Binding ConnectionName}"
+>
+
+    <ContentPage.ToolbarItems>
+        <!--<ToolbarItem IconImageSource="renewable_white.png" Order="Primary" Priority="0" Command ="{Binding RequestProofCommand}" ></ToolbarItem>-->
+        <!--<ToolbarItem IconImageSource="trustping.png" Order="Primary"  Priority="0" Command ="{Binding SendTrustPingCommand}" ></ToolbarItem>/-->
+        <ToolbarItem IconImageSource="information_white.png" 
+                     Order="Primary"  
+                     Priority="0"                      
+                     Command="{Binding ConnectionDetailsCommand}" />
+        <!--<ToolbarItem Name="RequestProof" Order="Primary" Text="Request" Priority="0" Command="{Binding RequestProofCommand}"/>
+        <ToolbarItem Name="Details" Order="Secondary" Text="Details" ios:NavigationPage.PrefersLargeTitles="true" Priority="1" Command="{Binding ConnectionDetailsCommand}" />
+        <ToolbarItem Name="TrustPing" Order="Secondary" Text="Send Trust Ping" ios:NavigationPage.PrefersLargeTitles="true" Priority="0" Command="{Binding SendTrustPingCommand}" />-->
+    </ContentPage.ToolbarItems>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:SelecteditemEventArgsToSelectedItemConverter x:Key="SelectedItemConverter" />
+            <converters:InverseBooleanConverter x:Key="BooleanInverse" />
+            <DataTemplate x:Key="actionTemplate">
+                <ViewCell>
+                    <views:ActionItemView/>
+                </ViewCell>
+            </DataTemplate>
+            <DataTemplate x:Key="multiActionTemplate">
+                <ViewCell>
+                    <views:MultiActionItemView/>
+                </ViewCell>
+            </DataTemplate>
+            <DataTemplate x:Key="statusTemplate">
+                <ViewCell>
+                    <views:StatusItemView/>
+                </ViewCell>
+            </DataTemplate>
+             <DataTemplate x:Key="errorTemplate">
+                <ViewCell>
+                    <views:ErrorItemView/>
+                </ViewCell>
+            </DataTemplate>
+            <views:ConnectionTransactionTemplateSelector
+                x:Key="connectionTransactionTemplateSelector"
+                ActionTemplate="{StaticResource actionTemplate}"
+                MultiActionTemplate="{StaticResource multiActionTemplate}"
+                StatusTemplate="{StaticResource statusTemplate}"
+                ErrorTemplate="{StaticResource errorTemplate}"
+            />
+            <local:ChatTemplateSelector x:Key="MessageTemplateSelector"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
+    
+
+    <ContentPage.Content>
+        <StackLayout>
+            <!--<StackLayout>-->
+                <!--AbsoluteLayout.LayoutBounds="0,0,1,1"
+                AbsoluteLayout.LayoutFlags="SizeProportional"-->
+                
+            
+                <!--<Grid
+                    IsClippedToBounds="false"
+                >
+                    <Grid.RowDefinitions>
+                        --><!--<RowDefinition Height="32"/>--><!--
+                        <RowDefinition Height="32" />
+                        <RowDefinition Height="18" />
+
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="48" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="48" />
+                    </Grid.ColumnDefinitions>
+                    <ImageButton
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        Grid.RowSpan="2"
+                        Source="back_icon.png"
+                        VerticalOptions="Center"
+                        Command="{Binding NavigateBackCommand}"
+                        Style="{StaticResource IconButtonStyle}"
+                    />
+                    --><!--<forms:CachedImage
+                        Grid.Row="0"
+                        Grid.Column="1"
+                        VerticalOptions="Center"
+                        HorizontalOptions="Center"
+                        HeightRequest="48"
+                        WidthRequest="48"
+                        FadeAnimationEnabled="true"
+                        DownsampleUseDipUnits="true"
+                        Source="{ Binding ConnectionImageUrl }"
+                        Aspect="AspectFit"
+                    />--><!--
+                    <ImageButton
+                        VerticalOptions="Center"
+                        Grid.Row="0"
+                        Grid.Column="2"
+                        Grid.RowSpan="2"   
+                        Source="more_icon.png"
+                        Style="{StaticResource IconButtonStyle}"
+                        Clicked="ToggleModalTapped"
+                    />
+                            
+                    <Label
+                        Grid.Row="0"
+                        Grid.Column="1"
+                        Grid.ColumnSpan="1"
+                        FontSize="Medium"
+                        TextColor="{StaticResource NavigationBarTextColor}"
+                        Text="{Binding ConnectionName}"
+                        FontAttributes="Bold"
+                        HorizontalTextAlignment="Center"
+                        VerticalTextAlignment="End"
+                    />
+                    <Label
+                        Grid.Row="1"
+                        Grid.Column="1"
+                        Grid.ColumnSpan="1"
+                        FontSize="Small"
+                        TextColor="{StaticResource NavigationBarTextColor}"
+                        Text="{ Binding ConnectionSubtitle }"
+                        HorizontalTextAlignment="Center"
+                    />
+                </Grid>-->
+                <!--<ListView
+                    SelectionMode="None"
+                    HasUnevenRows="true"
+                    BackgroundColor="{StaticResource BasePageColor}"
+                    ItemsSource="{Binding Transactions}"
+                    IsRefreshing="{Binding RefreshingTransactions}"
+                    IsPullToRefreshEnabled="True"
+                    RefreshCommand="{Binding RefreshTransactionsCommand}"
+                    ItemTemplate="{StaticResource connectionTransactionTemplateSelector}"
+                    SeparatorVisibility="Default"
+                />-->
+                <Grid RowSpacing="0" 
+                      ColumnSpacing="0" 
+                      Padding="0,5,0,0"
+                      BackgroundColor="#E5DDD5">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="1" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <!--   OUR CHAT VIEWS HERE   -->
+                    <ListView Grid.Row="0" 
+                            ItemTemplate="{StaticResource MessageTemplateSelector}" 
+                            ItemsSource="{Binding Messages}" 
+                            ItemTapped="OnListTapped"
+                            x:Name="ChatList"
+                            Margin="0" 
+                            HasUnevenRows="True" 
+                            VerticalOptions="FillAndExpand" 
+                            SeparatorColor="Transparent"
+                            Rotation="180"
+                            FlowDirection="RightToLeft" 
+                            VerticalScrollBarVisibility="Never">
+                    <ListView.Behaviors>
+
+                        <behaviours:EventToCommandBehavior
+                            Command="{Binding SelectCredentialCommand}"
+                            Converter="{StaticResource SelectedItemConverter}"
+                            DeselectOnClick="True"
+                            EventName="ItemSelected" />
+
+                    </ListView.Behaviors>
+                    </ListView>
+                    <BoxView HorizontalOptions="FillAndExpand"
+                         HeightRequest="1"
+                         BackgroundColor="SlateGray"
+                         Grid.Row="1"/>
+                    
+    
+                <components:ChatInputBarView x:Name="chatInput" 
+                                             Grid.Row="2" 
+                                             Margin="0,0,0,0" 
+                                             Padding="20,10,20,10" 
+                                             BackgroundColor="#F0F0F0"
+                                             />
+                </Grid>
+
+            <!--</StackLayout>-->
+            <!--<Frame
+                
+                HasShadow="false"
+                BackgroundColor="Transparent"
+                x:Name="moreModal"
+                IsVisible="true"
+            >
+                --><!--AbsoluteLayout.LayoutFlags="XProportional, WidthProportional, HeightProportional"
+                AbsoluteLayout.LayoutBounds="0, 96, 1, 1"--><!--
+                <Frame
+                    HasShadow="true"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"
+                >
+                    <StackLayout
+                        Margin="0"
+                        Padding="0"
+                        BackgroundColor="White"
+                        Opacity="1"
+                    >
+                        <StackLayout Orientation="Horizontal">
+                            <forms:CachedImage
+                                Grid.Row="0"
+                                Grid.Column="1"
+                                VerticalOptions="Center"
+                                HorizontalOptions="Center"
+                                HeightRequest="24"
+                                WidthRequest="24"
+                                FadeAnimationEnabled="true"
+                                DownsampleUseDipUnits="true"
+                                Source="{ Binding ConnectionImageUrl }"
+                                Aspect="AspectFit"
+                            />
+                            <Label
+                                Text="{Binding TheirDid, StringFormat='did:  {0}'}"
+                                TextColor="Black"
+                                FontSize="Small"
+                            />
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal">
+                            <forms:CachedImage
+                                Grid.Row="0"
+                                Grid.Column="1"
+                                VerticalOptions="Start"
+                                HorizontalOptions="Center"
+                                HeightRequest="24"
+                                WidthRequest="24"
+                                FadeAnimationEnabled="true"
+                                DownsampleUseDipUnits="true"
+                                Source="{ Binding ConnectionImageUrl }"
+                                Aspect="AspectFit"
+                            />
+                            <Label
+                                Text="{Binding MyDid, StringFormat='did:  {0}'}"
+                                TextColor="Black"
+                                FontSize="Small"
+                            />
+                        </StackLayout>
+                        <Button
+                            HorizontalOptions="FillAndExpand"
+                            Text="Delete Connection"
+                            Command="{Binding DeleteConnectionCommand}"
+                            Style="{StaticResource ButtonStyleDestructive}"
+                        />
+                    </StackLayout>
+                </Frame>    
+            </Frame>-->
+            
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

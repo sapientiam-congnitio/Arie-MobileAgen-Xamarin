@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Osma.Mobile.App.Views.Components.ChatInputBarView"
+             >
+    <Grid RowSpacing="0" 
+           ColumnSpacing="0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+
+        <Frame IsClippedToBounds="True"
+               CornerRadius="25"
+               Padding="20,0,20,0">
+
+            <Entry x:Name="chatTextInput" 
+                 Text="{Binding TextToSend}"  
+                 TextColor="Black" 
+                 Keyboard="Chat"  
+                 HorizontalOptions="FillAndExpand" 
+                 Grid.Row="0" 
+                 Grid.Column="0"
+                 BackgroundColor="#fff"
+               />
+        </Frame>
+        <!--Completed=""-->
+               
+        <Image Source="send_icon.png"
+               Grid.Row="0"
+               Grid.Column="1"
+               Margin="15,5,5,5"
+               HeightRequest="35"
+               WidthRequest="35">
+            <Image.GestureRecognizers>
+                <TapGestureRecognizer
+                    Command="{Binding SendMessageCommand}"
+                    Tapped="Handle_Completed"
+                />
+
+            </Image.GestureRecognizers>
+        </Image>
+    </Grid>
+</ContentView>
